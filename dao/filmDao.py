@@ -30,3 +30,13 @@ class Film:
         MySql.closeConnection()
 
         return data
+    
+    @classmethod
+    def  getCategories(cls, categoria):
+        MySql.openConnection()
+        MySql.query(f'Select title, name from film_category fc inner join film f on f.film_id=fc.film_id inner join category c on c.category_id=fc.category_id where name="{categoria}"')
+
+        data=MySql.getResults()
+        MySql.closeConnection()
+        
+        return data
