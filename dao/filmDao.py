@@ -10,7 +10,7 @@ class Film:
         data = MySql.getResults()
         films=list()
         for film in data:
-            films.append(Filmdto(film[0], film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11]))
+            films.append(Filmdto(film[0], film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11], film[12]))
 
         MySql.closeConnection()
 

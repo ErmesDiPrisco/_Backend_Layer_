@@ -4,6 +4,9 @@ class Actordto:
         self.FirstName=firstname
         self.LastName=lastname      
         self.last_update=last_update
+    
+    def __str__(self):
+        return f'{self.actor_id}, {self.FirstName}, {self.LastName}, {self.last_update}'
         
     @property
     def actor_id(self):

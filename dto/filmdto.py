@@ -13,6 +13,9 @@ class Filmdto:
         self.rating=rating
         self.special_feature=special_feature
         self.last_update=last_update
+
+    def __str__(self):
+        return '{},{},{},{},{},{},{},{},{},{},{},{}'.format(self.film_id,self.title,self.description,self.release_year, self.language_id, self.original_lanid, self.rental_duration, self.rental_rate, self.lenght, self.replacement_cost, self.rating, self.special_feature, self.last_update)
         
     @property
     def film_id(self):
