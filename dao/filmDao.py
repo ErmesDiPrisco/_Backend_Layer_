@@ -22,19 +22,25 @@ class Film:
         MySql.query("SELECT * FROM film WHERE rating like 'PG%'")
         
         data = MySql.getResults()
+        films=list()
+        for film in data:
+            films.append(Filmdto(film[0], film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11], film[12]))
         MySql.closeConnection()
 
-        return data
+        return films
 
     @classmethod
     def getAllTitleStartR(cls):
         MySql.openConnection()
-        MySql.query("SELECT title FROM film WHERE title LIKE 'R%'")
-
+        MySql.query("SELECT * FROM film WHERE title LIKE 'R%'")
         data = MySql.getResults()
+        films=list()
+        for film in data:
+            films.append(Filmdto(film[0], film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11], film[12]))
+
         MySql.closeConnection()
 
-        return data
+        return films
     
     @classmethod
     def  getCategories(cls, categoria):

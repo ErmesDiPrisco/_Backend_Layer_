@@ -39,8 +39,11 @@ class ActorDao:
           f"SELECT * FROM Actor WHERE first_name = '{name}'"
           )
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
         MySql.closeConnection()
-        return data
+        return actors
       
     @classmethod
     def findActorBySurname(cls, surname):
@@ -49,32 +52,41 @@ class ActorDao:
           f"SELECT * FROM Actor WHERE last_name = '{surname}'"
           )
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
         MySql.closeConnection()
-        return data  
+        return actors 
 
     @classmethod
     def findActorById(cls, id_attore):
         MySql.openConnection()
         MySql.query(
-          f"SELECT first_name, last_name\
+          f"SELECT *\
             FROM ACTOR\
             WHERE actor_id = {id_attore}"
         )
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
         MySql.closeConnection()
-        return data
+        return actors
 
     @classmethod
     def findActorByIdentityNumber(cls, id):
         MySql.openConnection()
         MySql.query(
-          f"SELECT first_name, last_name\
+          f"SELECT *\
             FROM ACTOR\
             WHERE actor_id = {id}"
         )
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
         MySql.closeConnection()
-        return data
+        return actors
 
     @classmethod
     def findFirstNameAndLastnameBy15NumFilm(cls):

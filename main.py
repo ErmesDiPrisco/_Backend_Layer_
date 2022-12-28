@@ -1,6 +1,5 @@
 from dao.actorDao import ActorDao
 
-titolofilm=input('')
-result=ActorDao.findFirstNameAndLastnameByFilmTitle(titolofilm)
+result=ActorDao.findFirstNameAndLastnameBy15NumFilm()
 for r in result:
     print(r)
