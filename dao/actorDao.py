@@ -1,18 +1,20 @@
 from dao.utility.db import MySql
-
+from dto.actordto import Actordto
 
 class ActorDao:
     @classmethod
     def findAllActors(cls):
         MySql.openConnection()
         MySql.query(
-          "SELECT first_name, last_name \
-            FROM Actor\
-            ORDER BY last_name"
-          )
+          "SELECT * \
+            FROM Actor")
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
+
         MySql.closeConnection()
-        return data
+        return actors
 
     @classmethod
     def findFirstNameAndLastnameByFilmTitle(cls, titolo_film):
