@@ -20,14 +20,17 @@ class ActorDao:
     def findFirstNameAndLastnameByFilmTitle(cls, titolo_film):
         MySql.openConnection()
         MySql.query(
-          f"SELECT a.first_name, a.last_name \
+          f"SELECT a.actor_id, a.first_name, a.last_name, a.last_update\
             FROM Actor a, Film f, Film_Actor fa \
             WHERE a.actor_id = fa.actor_id AND fa.film_id = f.film_id \
             AND f.title = '{titolo_film}'"
             )
         data = MySql.getResults()
+        actors=list()
+        for actor in data:
+          actors.append(Actordto(actor[0], actor[1], actor[2], actor[3]))
         MySql.closeConnection()
-        return data
+        return actors
       
     @classmethod
     def findActorByName(cls, name):
